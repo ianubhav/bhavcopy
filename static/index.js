@@ -1,4 +1,13 @@
-$( ".go-button" ).click(function() {
+$(document).ready(function() {
+  var top_table = $('#top_stocks').DataTable({
+      "searching": false
+      });
+
+   var search_table = $('#search').DataTable({
+      "searching": false,
+      });
+
+   $( ".go-button" ).click(function() {
 
   value = $('.search-text').val()
 
@@ -14,9 +23,18 @@ $( ".go-button" ).click(function() {
   $.post("/search",data,
     function(data, status) {
       for (var i = 0; i < data.length; i++) {
-          $('.search tbody').append("<tr><td>" + data[i].code + "</td><td>" + data[i].name + "</td><td>" + data[i].open + "</td><td>" + data[i].high + "</td><td>" + data[i].low + "</td><td>" + data[i].close + "</td></tr>");
+          search_table.row.add( [
+            data[i].code,
+            data[i].name,
+            data[i].open,
+            data[i].high,
+            data[i].low,
+            data[i].close
+        ] ).draw( false );
       }
     }
   ,dataType = "json");
 
 });
+
+} );
