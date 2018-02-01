@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>MaterializeCSS Multi-Column Card Flow</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="static/style.css">
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="table-top">
+        <h2>Top 10 Stocks</h2>
+        <table class="table table-hover table-bordered top_stocks">
+          <thead>
+            <tr>
+              <th class="col-md-2 col-xs-2">Code</th>
+              <th class="col-md-2 col-xs-2">Name</th>
+              <th class="col-md-2 col-xs-2">Open</th>
+              <th class="col-md-2 col-xs-2">High</th>
+              <th class="col-md-2 col-xs-2">Low</th>
+              <th class="col-md-2 col-xs-2">Close</th>
+            </tr>
+            <tr class="warning no-result">
+              <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for items in top_stocks %}
+            <tr>
+              <td>{{items['code']}}</td>
+              <td>{{items['name']}}</td>
+              <td>{{items['open']}}</td>
+              <td>{{items['high']}}</td>
+              <td>{{items['low']}}</td>
+              <td>{{items['close']}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <div class="table-search">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="input-group">
+                <input type="text" class="form-control search-text" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary go-button" type="button">Go!</button>
+                </span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <table class="table table-hover table-bordered search">
+          <thead>
+            <tr>
+              <th class="col-md-2 col-xs-2">Code</th>
+              <th class="col-md-2 col-xs-2">Name</th>
+              <th class="col-md-2 col-xs-2">Open</th>
+              <th class="col-md-2 col-xs-2">High</th>
+              <th class="col-md-2 col-xs-2">Low</th>
+              <th class="col-md-2 col-xs-2">Close</th>
+            </tr>
+            <tr class="warning no-result">
+              <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+    </div>
+  </div>
+</body>
+<script src="static/index.js"></script>
+</html>
